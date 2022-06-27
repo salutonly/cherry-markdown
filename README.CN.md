@@ -183,7 +183,7 @@ const cherryInstance = new Cherry({
 });
 ```
 
-### 异步加载 (pay attention)
+### 异步加载
 
 **recommend** 使用异步引入，以下为 webpack 异步引入样例。
 
