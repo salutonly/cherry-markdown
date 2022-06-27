@@ -1,6 +1,6 @@
 <p align="center"><img src="logo/logo--color.svg" alt="cherry logo" width="50%"/></p>
 
-# Cherry Markdown Editor
+# Cherry Markdown Editor 
 
 ## 介绍
 
@@ -72,8 +72,6 @@ Cherry Markdown 有多种样式主题选择
 - [表格编辑](https://tencent.github.io/cherry-markdown/examples/table.html)
 - [标题自动序号](https://tencent.github.io/cherry-markdown/examples/head_num.html)
 
-
-
 ## 安装
 
 通过 yarn
@@ -88,9 +86,9 @@ yarn add cherry-markdown
 npm install cherry-markdown --save
 ```
 
-如果需要开启 `mermaid` 画图、表格自动转图表功能，需要同时添加`mermaid` 与`echarts`包。
+如果需要开启 `mermaid` 画图、表格自动转图表功能，需要同时添加 `mermaid` 与 `echarts`包。
 
-目前**Cherry**推荐的插件版本为`echarts@4.6.0`、`mermaid@8.11.1`
+目前**Cherry**推荐的插件版本为 `echarts@4.6.0`、`mermaid@8.11.1`
 
 ```bash
 # 安装mermaid依赖开启mermaid画图功能
@@ -185,7 +183,7 @@ const cherryInstance = new Cherry({
 });
 ```
 
-### 异步加载
+### 异步加载 (pay attention)
 
 **recommend** 使用异步引入，以下为 webpack 异步引入样例。
 
@@ -413,6 +411,7 @@ registerPlugin().then(() => {
 点击查看 [examples](./examples/)
 
 ### 客户端
+
 [cherry-markdown 桌面客户端](./docs/cherry_editor_client.CN.md)
 
 ## 拓展
@@ -420,6 +419,7 @@ registerPlugin().then(() => {
 ### 自定义语法
 
 #### sentence Syntax
+
 如果编译内容没有额外特殊要求，使用普通语法
 
 ```javascript
@@ -456,9 +456,10 @@ new Cherry({
 });
 ```
 
-
 #### paragraph Syntax
+
 如果编译内容要求不受外界影响，则使用段落语法
+
 ```javascript
 /*
  * 生成一个屏蔽敏感词汇的hook
