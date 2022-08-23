@@ -30,6 +30,9 @@ var basicConfig = {
       },
     },
     syntax: {
+      codeBlock: {
+        theme: 'twilight',
+      },
       table: {
         enableChart: false,
         // chartEngine: Engine Class
@@ -76,10 +79,11 @@ var basicConfig = {
       '|',
       'color',
       'header',
+      'ruby',
       '|',
       'list',
       {
-        insert: ['image', 'audio', 'video', 'link', 'hr', 'br', 'code', 'formula', 'toc', 'table', 'pdf', 'word'],
+        insert: ['image', 'audio', 'video', 'link', 'hr', 'br', 'code', 'formula', 'toc', 'table', 'pdf', 'word', 'ruby'],
       },
       'graph',
       'togglePreview',
@@ -88,6 +92,7 @@ var basicConfig = {
       'codeTheme',
       'export',
     ],
+    bubble: ['bold', 'italic', 'underline', 'strikethrough', 'sub', 'sup', 'quote', 'ruby', '|', 'size', 'color'], // array or false
     sidebar: ['mobilePreview', 'copy'],
   },
   editor: {
@@ -99,6 +104,9 @@ var basicConfig = {
   },
   keydown: [],
   //extensions: [],
+  callback: {
+    changeString2Pinyin: pinyin,
+  }
 };
 
 fetch('./markdown/basic.md').then((response) => response.text()).then((value) => {

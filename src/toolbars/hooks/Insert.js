@@ -15,6 +15,7 @@
  */
 import MenuBase from '@/toolbars/MenuBase';
 import BubbleTableMenu from '@/toolbars/BubbleTable';
+import { getSelection } from '@/utils/selection';
 /**
  * "插入"按钮
  */
@@ -28,6 +29,10 @@ export default class Insert extends MenuBase {
     editor.options.wrapperDom.appendChild(this.subBubbleTableMenu.dom);
 
     // 定义子菜单
+    /**
+     * **TODO**:
+     *   这里所有子菜单的代码应该删掉，复用已有的toolbar对象
+     */
     this.subMenuConfig = [
       { iconName: 'image', name: 'image', onclick: this.bindSubClick.bind(this, 'image') },
       { iconName: 'video', name: 'audio', onclick: this.bindSubClick.bind(this, 'audio') },
@@ -44,6 +49,7 @@ export default class Insert extends MenuBase {
       // {iconName:'headlessTable', onclick: this.bindSubClick.bind(this, 'headlessTable'), async: true},
       { iconName: 'pdf', name: 'pdf', onclick: this.bindSubClick.bind(this, 'pdf') },
       { iconName: 'word', name: 'word', onclick: this.bindSubClick.bind(this, 'word') },
+      { iconName: 'pinyin', name: 'ruby', onclick: this.bindSubClick.bind(this, 'ruby') },
     ];
     // 用户可配置
     if (options instanceof Array) {
@@ -140,6 +146,7 @@ export default class Insert extends MenuBase {
       const text = `${selection}\n\n|${headerText}\n|${controlText}${rowText.repeat(row)}\n\n`;
       return text;
     }
+    const $selection = getSelection(this.editor.editor, selection);
     switch (shortKey) {
       case 'hr':
         // 插入分割线
@@ -228,6 +235,12 @@ export default class Insert extends MenuBase {
         // 可以在文件上传逻辑里做处理，word上传后通过后台服务转成html再返回，前端接受后进行处理并回填
         this.handleUpload('word');
         return selection;
+      case 'ruby':
+        // 如果选中的文本中已经有ruby语法了，则去掉该语法
+        if (/^\s*\{[\s\S]+\|[\s\S]+\}/.test($selection)) {
+          return $selection.replace(/^\s*\{\s*([\s\S]+?)\s*\|[\s\S]+\}\s*/gm, '$1');
+        }
+        return ` { ${$selection} | ${this.editor.$cherry.options.callback.changeString2Pinyin($selection).trim()} } `;
     }
   }
 
