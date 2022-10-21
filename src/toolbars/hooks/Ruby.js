@@ -19,9 +19,13 @@ import { getSelection } from '@/utils/selection';
  * 生成ruby，使用场景：给中文增加拼音、给中文增加英文、给英文增加中文等等
  */
 export default class Ruby extends MenuBase {
-  constructor(editor) {
-    super(editor);
+  constructor($cherry) {
+    super($cherry);
     this.setName('pinyin', 'pinyin');
+  }
+
+  $testIsRuby(selection) {
+    return /^\s*\{[\s\S]+\|[\s\S]+\}/.test(selection);
   }
 
   /**
@@ -31,12 +35,25 @@ export default class Ruby extends MenuBase {
    * @returns {string} 回填到编辑器光标位置/选中文本区域的内容
    */
   onClick(selection, shortKey = '') {
-    const $selection = getSelection(this.editor.editor, selection) || '拼音';
+    let $selection = getSelection(this.editor.editor, selection) || '拼音';
     // 如果选中的文本中已经有ruby语法了，则去掉该语法
-    if (/^\s*\{[\s\S]+\|[\s\S]+\}/.test($selection)) {
+    if (!this.isSelections && !this.$testIsRuby($selection)) {
+      this.getMoreSelection(' { ', ' } ', () => {
+        const newSelection = this.editor.editor.getSelection();
+        const isRuby = this.$testIsRuby(newSelection);
+        if (isRuby) {
+          $selection = newSelection;
+        }
+        return isRuby;
+      });
+    }
+    if (this.$testIsRuby($selection)) {
       return $selection.replace(/^\s*\{\s*([\s\S]+?)\s*\|[\s\S]+\}\s*/gm, '$1');
     }
-    const pinyin = this.editor.$cherry.options.callback.changeString2Pinyin($selection) || 'pin yin';
-    return ` { ${$selection} | ${pinyin.trim()} } `;
+    const pinyin = (this.editor.$cherry.options.callback.changeString2Pinyin($selection) || 'pin yin').trim();
+    this.registerAfterClickCb(() => {
+      this.setLessSelection(' { ', ' } ');
+    });
+    return ` { ${$selection} | ${pinyin} } `;
   }
 }

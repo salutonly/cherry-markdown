@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.4](https://github.com/Tencent/cherry-markdown/compare/v0.8.3...v0.8.4) (2022-10-13)
+
+### [0.8.3](https://github.com/Tencent/cherry-markdown/compare/v0.8.2...v0.8.3) (2022-10-13)
+
+
+### Bug Fixes
+
+* **husky:** init husky in prepare instead of postinstall ([37ada7d](https://github.com/Tencent/cherry-markdown/commit/37ada7d8ed8cdda8126548c245620e40760f03ec))
+
+### [0.8.2](https://github.com/Tencent/cherry-markdown/compare/v0.8.1...v0.8.2) (2022-09-16)
+
+
+### Features
+
+* 丰富快捷键 ([07f30c9](https://github.com/Tencent/cherry-markdown/commit/07f30c9b93a51456856e8d998b932cd09723c194)), closes [#319](https://github.com/Tencent/cherry-markdown/issues/319)
+
+
+### Bug Fixes
+
+* 懒加载机制没有考虑预览区域完全撑开的情况 ([a35ce1b](https://github.com/Tencent/cherry-markdown/commit/a35ce1b552205f85da0e29342c021c9ada813d28))
+* 修复懒加载时占位图没有展示的问题 ([3dd20fe](https://github.com/Tencent/cherry-markdown/commit/3dd20feb97798e4180107a55ac5b038e4f87ce39))
+* 自定义菜单有问题，修复并增加例子 [#317](https://github.com/Tencent/cherry-markdown/issues/317) [#315](https://github.com/Tencent/cherry-markdown/issues/315) ([09ccd30](https://github.com/Tencent/cherry-markdown/commit/09ccd30072cc55d7e27341d3c44c6ece449b32fb))
+
+### [0.8.1](https://github.com/Tencent/cherry-markdown/compare/v0.8.0...v0.8.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* 懒加载逻辑不能幂等 ([a2198cb](https://github.com/Tencent/cherry-markdown/commit/a2198cb9f6b0ecb720be3e2c26a4385e9b49e7d7))
+
+## [0.8.0](https://github.com/Tencent/cherry-markdown/compare/v0.7.9...v0.8.0) (2022-09-01)
+
+
+### Features
+
+* 实现快捷键显示/隐藏toolbar [#268](https://github.com/Tencent/cherry-markdown/issues/268) ([10cce7d](https://github.com/Tencent/cherry-markdown/commit/10cce7defa5d07420fa5849a970b3ac0bc594a2a))
+* 通过快捷键来实现显示|隐藏 toolbar 或 设置按钮子菜单隐藏toolbar [#268](https://github.com/Tencent/cherry-markdown/issues/268) ([8c05a87](https://github.com/Tencent/cherry-markdown/commit/8c05a87a22f78b11ce7a50951e35b5e203123783))
+* 优化字体大小按钮的选区，并增加快捷键 ([901db75](https://github.com/Tencent/cherry-markdown/commit/901db75b5e058322f26a66c6163616348af5f421))
+* 优化toolbar插入内容时的选区逻辑 ([3b02d07](https://github.com/Tencent/cherry-markdown/commit/3b02d07dca4c562426787e77206397a073550d88))
+
+
+### Bug Fixes
+
+* [#301](https://github.com/Tencent/cherry-markdown/issues/301) ([#302](https://github.com/Tencent/cherry-markdown/issues/302)) ([f8bae8b](https://github.com/Tencent/cherry-markdown/commit/f8bae8bdb5fa5c981ee280f81e487f5de2a81ac0))
+* 暗黑模式下调色盘文字看不清楚 ([fef4aba](https://github.com/Tencent/cherry-markdown/commit/fef4aba6c54cb6dfb95d53a75f2b4e4f636810fb))
+* 无法使用Ctrl+Shift组合键 [#290](https://github.com/Tencent/cherry-markdown/issues/290) ([e07e9ac](https://github.com/Tencent/cherry-markdown/commit/e07e9acb0648333b292f97bde9ccc1afbd5b8679))
+* Cannot read properties of undefined (reading 'createBtn') [#303](https://github.com/Tencent/cherry-markdown/issues/303) ([#304](https://github.com/Tencent/cherry-markdown/issues/304)) ([1fc3689](https://github.com/Tencent/cherry-markdown/commit/1fc3689c8ef9b95fb16ec8ef216deb9a462d6d3f))
+* lint err Expected '!==' and instead saw '!=' ([90a410b](https://github.com/Tencent/cherry-markdown/commit/90a410bef5810b1814d3728d02652d0dc945c7a9))
+
 ### [0.7.9](https://github.com/Tencent/cherry-markdown/compare/v0.7.8...v0.7.9) (2022-08-12)
 
 
