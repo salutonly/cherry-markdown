@@ -151,7 +151,10 @@ var basicConfig = {
       'color',
       'header',
       '|',
-      'list',
+      'ol',
+      'ul',
+      'checklist',
+      '|',
       'formula',
       {
         insert: ['image', 'audio', 'video', 'link', 'hr', 'br', 'code', 'formula', 'toc', 'table', 'pdf', 'word', 'ruby'],
@@ -166,6 +169,7 @@ var basicConfig = {
         customMenuBName: ['ruby', 'audio', 'video', 'customMenuAName'],
       },
       'customMenuCName',
+      'theme'
     ],
     bubble: ['bold', 'italic', 'underline', 'strikethrough', 'sub', 'sup', 'quote', 'ruby', '|', 'size', 'color'], // array or false
     sidebar: ['mobilePreview', 'copy'],

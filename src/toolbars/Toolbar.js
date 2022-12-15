@@ -17,8 +17,14 @@ import { mac } from 'codemirror/src/util/browser';
 import HookCenter from './HookCenter';
 import Event from '@/Event';
 import { createElement } from '@/utils/dom';
+import Logger from '@/Logger';
 
 export default class Toolbar {
+  /**
+   * @type {Record<string, any>} 外部获取 toolbarHandler
+   */
+  toolbarHandlers = {};
+
   constructor(options) {
     // 存储所有菜单的实例
     this.menus = {};
@@ -43,6 +49,7 @@ export default class Toolbar {
 
   init() {
     this.collectShortcutKey();
+    this.collectToolbarHandler();
     Event.on(this.instanceId, Event.Events.cleanAllSubMenus, () => this.hidAlleSubMenu());
   }
 
@@ -57,20 +64,22 @@ export default class Toolbar {
   }
 
   isHasLevel2Menu(name) {
+    // FIXME: return boolean
     return this.menus.level2MenusName[name];
   }
 
   isHasConfigMenu(name) {
+    // FIXME: return boolean
     return this.menus.hooks[name].subMenuConfig || [];
   }
 
   /**
    * 判断是否有子菜单，目前有两种子菜单配置方式：1、通过`subMenuConfig`属性 2、通过`buttonConfig`配置属性
-   * @param {String} name
+   * @param {string} name
    * @returns {boolean} 是否有子菜单
    */
   isHasSubMenu(name) {
-    return this.isHasLevel2Menu(name) || this.isHasConfigMenu(name).length > 0;
+    return Boolean(this.isHasLevel2Menu(name) || this.isHasConfigMenu(name).length > 0);
   }
 
   /**
@@ -142,9 +151,9 @@ export default class Toolbar {
   }
 
   toggleSubMenu(name) {
+    this.hidAlleSubMenu(); // 切换前先隐藏所有的二级菜单，就不会出现首次点击的时候多个二级菜单的问题 add by ufec
     if (this.subMenus[name]) {
       const test = this.subMenus[name].style.display;
-      this.hidAlleSubMenu();
       this.subMenus[name].style.display = test === 'none' ? 'block' : 'none';
     } else {
       this.drawSubMenus(name);
@@ -169,6 +178,24 @@ export default class Toolbar {
         this.shortcutKeyMap[key] = name;
       });
     });
+  }
+
+  collectToolbarHandler() {
+    this.toolbarHandlers = this.menus.allMenusName.reduce((handlerMap, name) => {
+      const menuHook = this.menus.hooks[name];
+      if (!menuHook) {
+        return handlerMap;
+      }
+      handlerMap[name] = (shortcut, _callback) => {
+        if (typeof _callback === 'function') {
+          Logger.warn(
+            'MenuBase#onClick param callback is no longer supported. Please register the callback via MenuBase#registerAfterClickCb instead.',
+          );
+        }
+        menuHook.fire.call(menuHook, undefined, shortcut);
+      };
+      return handlerMap;
+    }, {});
   }
 
   /**

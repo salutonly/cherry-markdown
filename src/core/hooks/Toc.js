@@ -102,7 +102,7 @@ export default class Toc extends ParagraphBase {
     if (prependWhitespaceIndent) {
       nodePrefix = this.$makeLevel(node.level);
     }
-    const tocLink = this.linkProcessor(`#${node.id}`);
+    const tocLink = this.linkProcessor(`#${node.id}`.replace(/safe_/g, '')); // transform header id to avoid being sanitized
     return `<li class="${this.tocNodeClass}">${nodePrefix}<a href="${tocLink}" class="level-${node.level}">${
       node.text
     }</a>${closeTag ? '</li>' : ''}`;
@@ -233,7 +233,7 @@ export default class Toc extends ParagraphBase {
   afterMakeHtml(str) {
     let $str = super.afterMakeHtml(str);
     const headerList = [];
-    const headerRegex = /<h([1-6]) id="([^"]+?)" data-sign=".+?" data-lines="[0-9]+"><a[^/]+?\/a>(.+?)<\/h\1>/g;
+    const headerRegex = /<h([1-6])[^>]*? id="([^"]+?)"[^>]*?>(?:<a[^/]+?\/a>|)(.+?)<\/h\1>/g;
     let str2Md5 = '';
     $str.replace(headerRegex, (match, level, id, text) => {
       const $text = text.replace(/~fn#[0-9]+#/g, '');

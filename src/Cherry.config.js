@@ -24,7 +24,17 @@ const callbacks = {
    */
   urlProcessor: (url, srcType) => url,
   fileUpload(file, callback) {
-    callback('images/demo-dog.png');
+    if (/video/i.test(file.type)) {
+      callback('images/demo-dog.png', {
+        name: `${file.name.replace(/\.[^.]+$/, '')}`,
+        poster: 'images/demo-dog.png?poster=true',
+        isBorder: true,
+        isShadow: true,
+        isRadius: true,
+      });
+    } else {
+      callback('images/demo-dog.png', { name: `${file.name.replace(/\.[^.]+$/, '')}`, isShadow: true });
+    }
   },
   afterChange: (text, html) => {},
   afterInit: (text, html) => {},
@@ -102,6 +112,7 @@ const defaultConfig = {
         theme: 'dark', // 默认为深色主题
         wrap: true, // 超出长度是否换行，false则显示滚动条
         lineNumber: true, // 默认显示行号
+        copyCode: true, // 是否显示“复制”按钮
         customRenderer: {
           // 自定义语法渲染器
         },
@@ -228,6 +239,16 @@ const defaultConfig = {
     float: ['h1', 'h2', 'h3', '|', 'checklist', 'quote', 'quickTable', 'code'], // array or false
   },
   fileUpload: callbacks.fileUpload,
+  /**
+   * 上传文件的时候用来指定文件类型
+   */
+  fileTypeLimitMap: {
+    video: 'video/*',
+    audio: 'audio/*',
+    image: 'image/*',
+    word: '.doc,.docx',
+    pdf: '.pdf',
+  },
   callback: {
     afterChange: callbacks.afterChange,
     afterInit: callbacks.afterInit,
@@ -277,12 +298,24 @@ const defaultConfig = {
       afterLoadAllImgCallback: () => {},
     },
   },
+  /**
+   * 配置主题，第三方可以自行扩展主题
+   */
+  theme: [
+    { className: 'default', label: '默认' },
+    { className: 'dark', label: '暗黑' },
+    { className: 'light', label: '明亮' },
+    { className: 'green', label: '清新' },
+    { className: 'red', label: '热情' },
+  ],
   // 预览页面不需要绑定事件
   isPreviewOnly: false,
   // 预览区域跟随编辑器光标自动滚动
   autoScrollByCursor: true,
   // 外层容器不存在时，是否强制输出到body上
   forceAppend: true,
+  // The locale Cherry is going to use. Locales live in /src/locales/
+  locale: 'zh_CN',
 };
 
 export default cloneDeep(defaultConfig);

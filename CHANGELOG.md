@@ -2,6 +2,86 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.9](https://github.com/Tencent/cherry-markdown/compare/v0.8.8...v0.8.9) (2022-11-29)
+
+
+### Features
+
+* delete unnecessary observer to adapt old version browers ([869963c](https://github.com/Tencent/cherry-markdown/commit/869963cfe58a082604a9bd6b7ec9e19d27114e68))
+* localisation support ([7ca12b7](https://github.com/Tencent/cherry-markdown/commit/7ca12b7e2de2d79ee5bf8ac6524277f2a76701bf)), closes [#217](https://github.com/Tencent/cherry-markdown/issues/217)
+* 增加有序列表、无序列表按钮 ([f52ff42](https://github.com/Tencent/cherry-markdown/commit/f52ff427d752c44855e8a3c57bf3b030de7eee34))
+
+
+### Bug Fixes
+
+* [#357](https://github.com/Tencent/cherry-markdown/issues/357) 优化z-index的取值 ([729b404](https://github.com/Tencent/cherry-markdown/commit/729b404386c72005bb028a4e6d209cabfb1b0669))
+* [#358](https://github.com/Tencent/cherry-markdown/issues/358) ([56ceedc](https://github.com/Tencent/cherry-markdown/commit/56ceedc498d256af89a265adb84a8c1efd27a3bd))
+* issue 350 ([ebce611](https://github.com/Tencent/cherry-markdown/commit/ebce6111ee6fec87434478be6eacd2d5880825b2))
+* 修复无浏览器模式报错 [#353](https://github.com/Tencent/cherry-markdown/issues/353) ([5571a4f](https://github.com/Tencent/cherry-markdown/commit/5571a4ff49e03338d8efdf38d4b6ce1d899185d4))
+
+### [0.8.8](https://github.com/Tencent/cherry-markdown/compare/v0.8.6...v0.8.8) (2022-11-08)
+
+
+### Features
+
+* support more code highlight ([#347](https://github.com/Tencent/cherry-markdown/issues/347)) ([a37c0ac](https://github.com/Tencent/cherry-markdown/commit/a37c0ac13289757f5419d3fd611702d68ff465b1))
+* support protobuf code highlight ([ddfd8f6](https://github.com/Tencent/cherry-markdown/commit/ddfd8f6769b1f0f1616613dc2a6d109343b1cfd5))
+* 增加切换主题的功能，本次提交实现了切换主题、记忆主题功能 ([c4eeb34](https://github.com/Tencent/cherry-markdown/commit/c4eeb3492302a8a862704ceca36051d00222ec05))
+* 增加四个默认的主题 ([d068772](https://github.com/Tencent/cherry-markdown/commit/d0687722fced763dadf39e1013f1ae102376c286))
+
+
+### Bug Fixes
+
+* **toolbar:** fix missing Toolbar#toolbarHandlers ([#349](https://github.com/Tencent/cherry-markdown/issues/349)) ([e55673f](https://github.com/Tencent/cherry-markdown/commit/e55673f720dfce0c32a134afb25c86f6a1276a61))
+* **toolbar:** fix missing Toolbar#toolbarHandlers ([#349](https://github.com/Tencent/cherry-markdown/issues/349)) ([4596b4a](https://github.com/Tencent/cherry-markdown/commit/4596b4a5d4f1bdfc6177c4d1b5a260174e9270dc))
+* 优化拖拽时插入的位置 [#338](https://github.com/Tencent/cherry-markdown/issues/338) ([d7269fb](https://github.com/Tencent/cherry-markdown/commit/d7269fb5470bcd12d98efb78577fd076f8f02cc9))
+* 修复设置换行模式的时候有报错，增加换行模式本地记忆功能 [#339](https://github.com/Tencent/cherry-markdown/issues/339) ([3facef0](https://github.com/Tencent/cherry-markdown/commit/3facef025f3585879cfd3014712fc74db1307039))
+* 复制代码快功能不再受preview bubble控制 [#337](https://github.com/Tencent/cherry-markdown/issues/337)  (同时增加图片懒加载的注释) ([4dbabd0](https://github.com/Tencent/cherry-markdown/commit/4dbabd01ddb0a6d4127cc780a9411a3957ef85db))
+* 粘贴企业微信内容时编辑器有报错 [#336](https://github.com/Tencent/cherry-markdown/issues/336) ([d333504](https://github.com/Tencent/cherry-markdown/commit/d33350407279eab4218c52ae3cb75d0d96872002))
+
+### [0.8.7](https://github.com/Tencent/cherry-markdown/compare/v0.8.6...v0.8.7) (2022-11-08)
+
+
+### Features
+
+* support more code highlight ([#347](https://github.com/Tencent/cherry-markdown/issues/347)) ([a37c0ac](https://github.com/Tencent/cherry-markdown/commit/a37c0ac13289757f5419d3fd611702d68ff465b1))
+* support protobuf code highlight ([ddfd8f6](https://github.com/Tencent/cherry-markdown/commit/ddfd8f6769b1f0f1616613dc2a6d109343b1cfd5))
+* 增加切换主题的功能，本次提交实现了切换主题、记忆主题功能 ([c4eeb34](https://github.com/Tencent/cherry-markdown/commit/c4eeb3492302a8a862704ceca36051d00222ec05))
+* 增加四个默认的主题 ([d068772](https://github.com/Tencent/cherry-markdown/commit/d0687722fced763dadf39e1013f1ae102376c286))
+
+
+### Bug Fixes
+
+* **toolbar:** fix missing Toolbar#toolbarHandlers ([#349](https://github.com/Tencent/cherry-markdown/issues/349)) ([e55673f](https://github.com/Tencent/cherry-markdown/commit/e55673f720dfce0c32a134afb25c86f6a1276a61))
+* **toolbar:** fix missing Toolbar#toolbarHandlers ([#349](https://github.com/Tencent/cherry-markdown/issues/349)) ([4596b4a](https://github.com/Tencent/cherry-markdown/commit/4596b4a5d4f1bdfc6177c4d1b5a260174e9270dc))
+* 优化拖拽时插入的位置 [#338](https://github.com/Tencent/cherry-markdown/issues/338) ([d7269fb](https://github.com/Tencent/cherry-markdown/commit/d7269fb5470bcd12d98efb78577fd076f8f02cc9))
+* 修复设置换行模式的时候有报错，增加换行模式本地记忆功能 [#339](https://github.com/Tencent/cherry-markdown/issues/339) ([3facef0](https://github.com/Tencent/cherry-markdown/commit/3facef025f3585879cfd3014712fc74db1307039))
+* 复制代码快功能不再受preview bubble控制 [#337](https://github.com/Tencent/cherry-markdown/issues/337)  (同时增加图片懒加载的注释) ([4dbabd0](https://github.com/Tencent/cherry-markdown/commit/4dbabd01ddb0a6d4127cc780a9411a3957ef85db))
+* 粘贴企业微信内容时编辑器有报错 [#336](https://github.com/Tencent/cherry-markdown/issues/336) ([d333504](https://github.com/Tencent/cherry-markdown/commit/d33350407279eab4218c52ae3cb75d0d96872002))
+
+### [0.8.6](https://github.com/Tencent/cherry-markdown/compare/v0.8.5...v0.8.6) (2022-10-28)
+
+
+### Bug Fixes
+
+* use appendChild instead of append to adapt chrome version 53 and lower ([a21925a](https://github.com/Tencent/cherry-markdown/commit/a21925a4267cf67c5acb003a44106d8523abbd75))
+
+### [0.8.5](https://github.com/Tencent/cherry-markdown/compare/v0.8.4...v0.8.5) (2022-10-21)
+
+
+### Features
+
+* transform header id to avoid being sanitized ([#324](https://github.com/Tencent/cherry-markdown/issues/324)) ([44935d9](https://github.com/Tencent/cherry-markdown/commit/44935d97ab87e1fb594d3e9337c1c325d5658bd1))
+* 增加上传文件格式限制，优化上传文件回调逻辑，增加视频封面功能 [#328](https://github.com/Tencent/cherry-markdown/issues/328) ([dbf8788](https://github.com/Tencent/cherry-markdown/commit/dbf87885f0272a6edc24f69cf10bdf0adb5d6af9))
+
+
+### Bug Fixes
+
+* [#321](https://github.com/Tencent/cherry-markdown/issues/321) merge from [@ufec](https://github.com/ufec) ([90fb48e](https://github.com/Tencent/cherry-markdown/commit/90fb48e1fa4491cb89634ddaf23a05a18f534846))
+* [#325](https://github.com/Tencent/cherry-markdown/issues/325) 连续字号时出现间隔识别的情况 ([0fb533c](https://github.com/Tencent/cherry-markdown/commit/0fb533c2411dcf87e69d954b1680f638d250f493))
+* update babel-jest version to solve conflict in node 16 ([ad4dbd5](https://github.com/Tencent/cherry-markdown/commit/ad4dbd5e3ffa4bcbe3a5f0c630da5e9ee1f8c77f))
+* 修复目录不展示的问题 ([8308b5c](https://github.com/Tencent/cherry-markdown/commit/8308b5c1541197fc5dc76c215b13f7e7deea490f))
+
 ### [0.8.4](https://github.com/Tencent/cherry-markdown/compare/v0.8.3...v0.8.4) (2022-10-13)
 
 ### [0.8.3](https://github.com/Tencent/cherry-markdown/compare/v0.8.2...v0.8.3) (2022-10-13)

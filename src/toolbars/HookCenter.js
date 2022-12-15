@@ -26,9 +26,11 @@ import Color from './hooks/Color';
 import Header from './hooks/Header';
 import Insert from './hooks/Insert';
 import List from './hooks/List';
+import Ol from './hooks/Ol';
+import Ul from './hooks/Ul';
+import CheckList from './hooks/CheckList';
 import Graph from './hooks/Graph';
 import Size from './hooks/Size';
-import CheckList from './hooks/CheckList';
 import H1 from './hooks/H1';
 import H2 from './hooks/H2';
 import H3 from './hooks/H3';
@@ -58,6 +60,7 @@ import BarTable from './hooks/BarTable';
 import Pdf from './hooks/Pdf';
 import Word from './hooks/Word';
 import Ruby from './hooks/Ruby';
+import Theme from './hooks/Theme';
 // Sidebar
 import MobilePreview from './hooks/MobilePreview';
 import Copy from './hooks/Copy';
@@ -75,9 +78,11 @@ const HookList = {
   header: Header,
   insert: Insert,
   list: List,
+  ol: Ol,
+  ul: Ul,
+  checklist: CheckList,
   graph: Graph,
   size: Size,
-  checklist: CheckList,
   h1: H1,
   h2: H2,
   h3: H3,
@@ -110,18 +115,27 @@ const HookList = {
   pdf: Pdf,
   word: Word,
   ruby: Ruby,
+  theme: Theme,
 };
 
 export default class HookCenter {
   constructor(toolbar) {
     this.toolbar = toolbar;
-    // 保存所有菜单实例
+    /**
+     * @type {{[key: string]: import('@/toolbars/MenuBase').default}} 保存所有菜单实例
+     */
     this.hooks = {};
-    // 所有注册的菜单名称
+    /**
+     * @type {string[]} 所有注册的菜单名称
+     */
     this.allMenusName = [];
-    // 一级菜单的名称
+    /**
+     * @type {string[]} 一级菜单的名称
+     */
     this.level1MenusName = [];
-    // 二级菜单的名称 {一级菜单名称: [二级菜单名称1, 二级菜单名称2]}
+    /**
+     * @type {{ [parentName: string]: string[]}} 二级菜单的名称, e.g. {一级菜单名称: [二级菜单名称1, 二级菜单名称2]}
+     */
     this.level2MenusName = {};
     this.init();
   }

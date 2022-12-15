@@ -15,7 +15,6 @@
  */
 
 import { createElement } from '@/utils/dom';
-import { t } from '@/Locales';
 
 const SAFE_AREA_MARGIN = 15;
 
@@ -34,11 +33,11 @@ const pasteHelper = {
    * @param {string} md html对应的markdown源码
    * @returns
    */
-  showSwitchBtnAfterPasteHtml(currentCursor, editor, html, md) {
+  showSwitchBtnAfterPasteHtml($cherry, currentCursor, editor, html, md) {
     if (html.trim() === md.trim()) {
       return;
     }
-    this.init(currentCursor, editor, html, md);
+    this.init($cherry, currentCursor, editor, html, md);
     this.setSelection();
     this.bindListener();
     this.initBubble();
@@ -49,18 +48,20 @@ const pasteHelper = {
     }
   },
 
-  init(currentCursor, editor, html, md) {
+  init($cherry, currentCursor, editor, html, md) {
+    this.$cherry = $cherry;
     this.html = html;
     this.md = md;
     this.codemirror = editor;
     this.currentCursor = currentCursor;
+    this.locale = $cherry.locale;
   },
 
   /**
    * 获取缓存中的复制粘贴类型
    */
   getTypeFromLocalStorage() {
-    if (!localStorage) {
+    if (typeof localStorage === 'undefined') {
       return 'md';
     }
     return localStorage.getItem('cherry-paste-type') || 'md';
@@ -70,7 +71,7 @@ const pasteHelper = {
    * 记忆最近一次用户选择的粘贴类型
    */
   setTypeToLocalStorage(type) {
-    if (!localStorage) {
+    if (typeof localStorage === 'undefined') {
       return;
     }
     localStorage.setItem('cherry-paste-type', type);
@@ -175,12 +176,12 @@ const pasteHelper = {
     dom.style.display = 'none';
 
     const switchText = createElement('span', 'cherry-toolbar-button cherry-text-btn', {
-      title: t('粘贴为纯文本格式'),
+      title: this.locale.pastePlain,
     });
     switchText.innerText = 'TEXT';
 
     const switchMd = createElement('span', 'cherry-toolbar-button cherry-md-btn', {
-      title: t('粘贴为markdown格式'),
+      title: this.locale.pasteMarkdown,
     });
     switchMd.innerText = 'Markdown';
 
